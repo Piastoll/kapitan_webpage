@@ -9,7 +9,9 @@ window.KAPITAN_DATA = {
     social: {
       facebook: "https://www.facebook.com/KapitanBurgerJG",
       instagram: "https://www.instagram.com/kapitanburger/",
-      pyszne: "#"
+      // TODO: replace with the exact Pyszne.pl restaurant listing URL.
+      // Falls back to a Pyszne search for the brand so the link is never dead.
+      pyszne: "https://www.pyszne.pl/szukaj?q=Kapitan%20Burger%20Jastrz%C4%99bia%20G%C3%B3ra"
     }
   },
   burger: {
@@ -109,14 +111,14 @@ window.KAPITAN_DATA = {
   delivery: [
     {
       lede: true,
-      icon: "⚓",
+      icon: "anchor",
       title: "Zamów od Kapitana",
       body: "Wybierz swoją drogę po najlepszy street food w okolicy. My zajmiemy się resztą.",
       meta: [],
       cta: { label: "Zadzwoń · +48 732 921 503", href: "tel:+48732921503" }
     },
     {
-      icon: "🛵",
+      icon: "scooter",
       title: "Dostawa pod drzwi",
       body: "Burczy w brzuchu? Nasz dostawca już grzeje silnik, żeby dowieźć Ci gorący towar.",
       meta: [
@@ -127,7 +129,7 @@ window.KAPITAN_DATA = {
       cta: { label: "Zadzwoń i zamów", href: "tel:+48732921503" }
     },
     {
-      icon: "🥡",
+      icon: "bag",
       title: "Wpadnij po odbiór",
       body: "Nie lubisz czekać? Złóż zamówienie telefonicznie, a my wrzucimy mięcho na ruszt. Odbierzesz dokładnie wtedy, gdy będzie gotowe.",
       meta: [
@@ -139,11 +141,11 @@ window.KAPITAN_DATA = {
   ],
 
   pillars: [
-    { ico: "10", title: "Dekada w grze", body: "Przez 10 lat przerobiliśmy tony wołowiny i streetfoodowych klasyków. Doświadczenie czuć w każdym kęsie." },
-    { ico: "★",  title: "Lokalny patriotyzm", body: "Buły to nie mrożonki z marketu — rzemieślnicza robota z zaprzyjaźnionej piekarni. Maślane, puszyste, zawsze świeże." },
-    { ico: "≈",  title: "Tylko prawdziwy grill", body: "Żadnych mikrofali ani dziwnych wynalazków. Smażymy na żywym ogniu, bo tylko tak jedzenie nabiera charakteru." },
-    { ico: "✚",  title: "Jakość bez kompromisów", body: "Wybieramy dostawców z okolicy, bo wiemy, skąd biorą towar. Świeżo, lokalnie, bez kompromisów." },
-    { ico: "♡",  title: "Rodzinny vibe", body: "Kapitan to nasz dom. Prowadzimy to razem, po swojemu i zawsze z uśmiechem." }
+    { ico: "10",    title: "Dekada w grze", body: "Przez 10 lat przerobiliśmy tony wołowiny i streetfoodowych klasyków. Doświadczenie czuć w każdym kęsie." },
+    { ico: "star",  title: "Lokalny patriotyzm", body: "Buły to nie mrożonki z marketu — rzemieślnicza robota z zaprzyjaźnionej piekarni. Maślane, puszyste, zawsze świeże." },
+    { ico: "flame", title: "Tylko prawdziwy grill", body: "Żadnych mikrofali ani dziwnych wynalazków. Smażymy na żywym ogniu, bo tylko tak jedzenie nabiera charakteru." },
+    { ico: "badge", title: "Jakość bez kompromisów", body: "Wybieramy dostawców z okolicy, bo wiemy, skąd biorą towar. Świeżo, lokalnie, bez kompromisów." },
+    { ico: "heart", title: "Rodzinny vibe", body: "Kapitan to nasz dom. Prowadzimy to razem, po swojemu i zawsze z uśmiechem." }
   ],
 
   navLinks: [

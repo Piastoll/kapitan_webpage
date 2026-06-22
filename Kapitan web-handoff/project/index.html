@@ -5,80 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Kapitan — Burger & Kebs · Jastrzębia Góra</title>
   <meta name="description" content="Kapitan Burger i Kapitan Kebs — dwa kierunki smaku, jedna marka. Street food w Jastrzębiej Górze, prosto z foodtrucka. Wybierz Burger albo Kebs." />
+  <meta name="theme-color" content="#16110e" />
+
+  <!-- preload the LCP hero image (default brand = Burger) -->
+  <link rel="preload" as="image" href="assets/burger_serowy.jpg" fetchpriority="high" />
+
+  <!-- favicons -->
+  <link rel="icon" type="image/png" href="assets/logo_kapitan_burger.png" />
+  <link rel="apple-touch-icon" href="assets/logo_kapitan_burger.png" />
+
+  <!-- Open Graph / Twitter share preview
+       NOTE: og:url and og:image should be made ABSOLUTE (https://yourdomain/…)
+       once the site is deployed, or Facebook/Twitter scrapers can't fetch them. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:site_name" content="Kapitan Burger & Kebs" />
+  <meta property="og:title" content="Kapitan — Burger & Kebs · Jastrzębia Góra" />
+  <meta property="og:description" content="Dwa kierunki smaku, jedna marka. Street food prosto z foodtrucka w Jastrzębiej Górze. 10 lat na ogniu, zero ściemy." />
+  <meta property="og:image" content="assets/burger_serowy.jpg" />
+  <meta property="og:image:alt" content="Soczysty burger Kapitana z grilla" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kapitan — Burger & Kebs · Jastrzębia Góra" />
+  <meta name="twitter:description" content="Dwa kierunki smaku, jedna marka. Street food prosto z foodtrucka w Jastrzębiej Górze." />
+  <meta name="twitter:image" content="assets/burger_serowy.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-
-  <!-- ============================================
-       LANDING — split-screen choice
-       ============================================ -->
-  <section id="landing" class="page page--landing is-active">
-    <div class="landing">
-      <div class="landing__split">
-        <a class="half half--burger" href="#burger" aria-label="Wejdź do Kapitan Burger">
-          <div class="half__photo"></div>
-          <div class="half__content">
-            <span class="half__tag">EST 2016 · 3city</span>
-            <h2 class="half__name">Kapitan<br><span class="accent">Burger</span></h2>
-            <div class="half__hash">#TeamBurger</div>
-            <span class="half__cta">
-              Wejdź do lokalu <span class="arrow">→</span>
-            </span>
-          </div>
-        </a>
-        <a class="half half--kebs" href="#kebs" aria-label="Wejdź do Kapitan Kebs">
-          <div class="half__photo"></div>
-          <div class="half__content">
-            <span class="half__tag">Berlin Style · Jastrzębia Góra</span>
-            <h2 class="half__name">Kapitan<br><span class="accent">Kebs</span></h2>
-            <div class="half__hash">#TeamKebsGemüse</div>
-            <span class="half__cta">
-              Wejdź do lokalu <span class="arrow">→</span>
-            </span>
-          </div>
-        </a>
-      </div>
-
-      <div class="landing__hero">
-        <span class="kicker">Jeden Kapitan · Dwa kierunki</span>
-        <h1 class="landing__h1">
-          <span class="line line--top">Wybierz swój</span>
-          <span class="line line--top">kapitalny smak</span>
-          <span class="line line--choice">
-            <span class="side side--burger"><span class="burger-word">Burger</span></span>
-            <span class="side side--or"><span class="or">czy</span></span>
-            <span class="side side--kebs"><span class="kebs-word">Kebs</span></span>
-          </span>
-        </h1>
-        <div class="sub">10 lat na ogniu, zero ściemy.</div>
-      </div>
-
-      <div class="landing__foot">ul. Rozewska 24 · Jastrzębia Góra · codziennie 12:00–22:00</div>
-    </div>
-  </section>
-
+<body data-brand="burger">
 
   <!-- ============================================
        BURGER PAGE
        ============================================ -->
-  <main id="burger" class="page page--burger burger" data-screen-label="Kapitan Burger" hidden>
+  <main id="burger" class="page page--burger burger is-active" data-screen-label="Kapitan Burger">
     <header class="topbar">
-      <a href="#landing" class="topbar__back" aria-label="Powrót do wyboru">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M15 6l-6 6 6 6"/>
-        </svg>
-        Wybór
-      </a>
-      <div class="topbar__logo topbar__logo--burger">
-        <img src="assets/logo_kapitan_burger_light.png" alt="Kapitan Burger" />
-      </div>
-      <button class="topbar__menu" data-drawer-open>
-        <span>Menu</span>
-        <span class="bars"><span></span><span></span><span></span></span>
+      <button class="iconbtn" data-drawer-open aria-label="Otwórz menu nawigacji">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
+      <nav class="brand-toggle" aria-label="Wybierz markę Kapitana">
+        <a href="#burger" class="brand-toggle__opt is-active">Burger</a>
+        <a href="#kebs" class="brand-toggle__opt">Kebs</a>
+      </nav>
+      <a href="tel:+48732921503" class="iconbtn iconbtn--call" aria-label="Zadzwoń do Kapitana">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.96.72 2.88a2 2 0 0 1-.45 2.11L8.09 10.09a16 16 0 0 0 6 6l1.38-1.38a2 2 0 0 1 2.11-.45c.92.35 1.88.59 2.88.72A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
     </header>
 
     <!-- HERO -->
@@ -86,12 +58,18 @@
       <div class="hero__photo"></div>
       <div class="hero__inner">
         <div>
+          <img class="hero__logo" src="assets/logo_kapitan_burger_light.png" alt="Kapitan Burger" width="262" height="117" decoding="async" />
           <span class="hero__kicker">100% wołowiny · Black Angus</span>
           <h1 class="hero__title">Soczyste<br>wołowe<br>z grilla<span class="small">— prosto od Kapitana</span></h1>
           <div class="hero__hash">#TeamBurger</div>
         </div>
         <div class="hero__meta">
+          <div class="hero__status" data-status aria-live="polite"></div>
           <p class="hero__lede">Maślane buły z lokalnej piekarni, mięso z Black Angus, autorski sos i żywy ogień. Streetfood, który robi robotę od 2016 roku.</p>
+          <div class="hero__actions">
+            <a class="btn btn--accent" href="#burger-menu">Zobacz menu</a>
+            <a class="btn btn--ghost" href="tel:+48732921503">Zadzwoń i zamów</a>
+          </div>
           <div class="hero__pills">
             <span class="pill accent">Grill na żywym ogniu</span>
             <span class="pill">Rzemieślnicze buły</span>
@@ -206,31 +184,34 @@
        ============================================ -->
   <main id="kebs" class="page page--kebs kebs" data-screen-label="Kapitan Kebs" hidden>
     <header class="topbar">
-      <a href="#landing" class="topbar__back" aria-label="Powrót do wyboru">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M15 6l-6 6 6 6"/>
-        </svg>
-        Wybór
-      </a>
-      <div class="topbar__logo topbar__logo--kebs">
-        <img src="assets/logo_kapitan_kebs_light.png" alt="Kapitan Kebs" />
-      </div>
-      <button class="topbar__menu" data-drawer-open>
-        <span>Menu</span>
-        <span class="bars"><span></span><span></span><span></span></span>
+      <button class="iconbtn" data-drawer-open aria-label="Otwórz menu nawigacji">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
+      <nav class="brand-toggle" aria-label="Wybierz markę Kapitana">
+        <a href="#burger" class="brand-toggle__opt">Burger</a>
+        <a href="#kebs" class="brand-toggle__opt is-active">Kebs</a>
+      </nav>
+      <a href="tel:+48732921503" class="iconbtn iconbtn--call" aria-label="Zadzwoń do Kapitana">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.96.72 2.88a2 2 0 0 1-.45 2.11L8.09 10.09a16 16 0 0 0 6 6l1.38-1.38a2 2 0 0 1 2.11-.45c.92.35 1.88.59 2.88.72A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
     </header>
 
     <section class="hero" data-screen-label="Kebs · Hero">
       <div class="hero__photo"></div>
       <div class="hero__inner">
         <div>
+          <img class="hero__logo" src="assets/logo_kapitan_kebs_light.png" alt="Kapitan Kebs" width="1448" height="1086" decoding="async" />
           <span class="hero__kicker">Berlin Style · Gemüse</span>
           <h1 class="hero__title">Berliński<br>kebs<br>z charakterem<span class="small">— prosto od Kapitana</span></h1>
           <div class="hero__hash">#TeamKebsGemüse</div>
         </div>
         <div class="hero__meta">
+          <div class="hero__status" data-status aria-live="polite"></div>
           <p class="hero__lede">Świeże warzywa, autorskie sosy i autentyczny smak, który robi robotę. Otwieramy nowy rozdział marki Kapitan — i robimy go po swojemu.</p>
+          <div class="hero__actions">
+            <a class="btn btn--accent" href="#kebs-dostawa">Jak zamówić</a>
+            <a class="btn btn--ghost" href="tel:+48732921503">Zadzwoń</a>
+          </div>
           <div class="hero__pills">
             <span class="pill accent">Premiera — wkrótce</span>
             <span class="pill">Berlin Style</span>
@@ -338,6 +319,17 @@
     </footer>
   </main>
 
+
+  <!-- ============================================
+       MOBILE STICKY CALL BAR (shared)
+       ============================================ -->
+  <a class="callbar" href="tel:+48732921503" aria-label="Zadzwoń i zamów: +48 732 921 503">
+    <span class="callbar__ico">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.96.72 2.88a2 2 0 0 1-.45 2.11L8.09 10.09a16 16 0 0 0 6 6l1.38-1.38a2 2 0 0 1 2.11-.45c.92.35 1.88.59 2.88.72A2 2 0 0 1 22 16.92z"/></svg>
+    </span>
+    <span class="callbar__txt">Zadzwoń i zamów</span>
+    <span class="callbar__num">+48 732 921 503</span>
+  </a>
 
   <!-- ============================================
        DRAWER (shared)

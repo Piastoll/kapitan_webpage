@@ -2,31 +2,48 @@
 (function() {
   const D = window.KAPITAN_DATA;
 
-  /* --------- router ---------- */
-  const pages = {
-    "": "landing",
-    "#": "landing",
-    "#landing": "landing",
-    "#burger": "burger",
-    "#kebs": "kebs"
+  /* --------- inline SVG icon set (replaces emoji) ----------
+     24x24, stroke=currentColor so they inherit the card colour. */
+  const svg = p => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+  const ICONS = {
+    anchor:  svg('<circle cx="12" cy="5" r="2"/><path d="M12 7v13"/><path d="M5 12a7 7 0 0 0 14 0"/><path d="M5 12H3l1.5-2M19 12h2l-1.5-2"/>'),
+    scooter: svg('<circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="2"/><path d="M9 17h6.5"/><path d="M4 7h4l3.5 8"/><path d="M14 7h3l3 5v3h-2"/>'),
+    bag:     svg('<path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 0 1 6 0"/>'),
+    cart:    svg('<circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M3 4h2l2.3 11.2a1 1 0 0 0 1 .8h8.3a1 1 0 0 0 1-.8L20.5 8H6"/>'),
+    star:    svg('<path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 17l-5.3 2.6 1-5.8L3.5 9.7l5.9-.9z"/>'),
+    flame:   svg('<path d="M12 3c.7 2.6 4.5 4 4.5 8a4.5 4.5 0 0 1-9 0c0-1.4.6-2.4 1.4-3.3.5 1 1.4 1.3 1.4 1.3.3-2.5-.3-4.6 .7-6z"/>'),
+    badge:   svg('<circle cx="12" cy="12" r="9"/><path d="M8.5 12.2l2.3 2.3 4.7-4.7"/>'),
+    heart:   svg('<path d="M12 20.3l-1.3-1.2C6 14.9 3.5 12.6 3.5 9.6 3.5 7.3 5.2 5.6 7.5 5.6c1.3 0 2.6.6 3.4 1.7l1.1 1.3 1.1-1.3c.8-1.1 2.1-1.7 3.4-1.7 2.3 0 4 1.7 4 4 0 3-2.5 5.3-7.2 9.5z"/>'),
   };
+  const icon = key => ICONS[key] || key;   // unknown keys (e.g. "10") render as plain text
+
+  /* --------- router ----------
+     Single-page model: one brand visible at a time, switched by the
+     sticky toggle. Burger is the default landing brand. */
   function route() {
-    const hash = window.location.hash || "#landing";
-    // section anchors inside pages
-    const root = hash.split("-")[0];
-    let active = pages[root] || "landing";
-    // if hash is "#burger-menu" type, treat root as burger/kebs
-    if (hash.startsWith("#burger")) active = "burger";
-    else if (hash.startsWith("#kebs")) active = "kebs";
-    else active = pages[hash] || "landing";
+    const hash = window.location.hash || "#burger";
+    const active = hash.startsWith("#kebs") ? "kebs" : "burger";
 
     document.querySelectorAll(".page").forEach(p => {
       const on = p.id === active;
       p.classList.toggle("is-active", on);
-      if (on) { p.hidden = false; } else { p.hidden = true; }
+      p.hidden = !on;
     });
 
-    // scroll: if anchor like #burger-menu, scroll to section
+    // expose active brand for shared, body-level themed components
+    document.body.dataset.brand = active;
+
+    // per-brand document title (helps tabs, bookmarks, share previews)
+    document.title = active === "kebs"
+      ? "Kapitan Kebs — Berlin Style · Jastrzębia Góra"
+      : "Kapitan Burger — Street food · Jastrzębia Góra";
+
+    // keep both toggles in sync (the hidden page's toggle too)
+    document.querySelectorAll(".brand-toggle__opt").forEach(a => {
+      a.classList.toggle("is-active", a.getAttribute("href") === "#" + active);
+    });
+
+    // scroll: if anchor like #burger-menu, scroll to section; else to top
     if (hash.includes("-")) {
       requestAnimationFrame(() => {
         const el = document.getElementById(hash.slice(1));
@@ -85,7 +102,7 @@
     mount.innerHTML = D.delivery.map(card => `
       <article class="del-card ${card.lede ? 'del-card__lede' : ''}">
         <span class="del-card__num">${(D.delivery.indexOf(card)+1).toString().padStart(2,'0')}</span>
-        <div class="del-card__icon">${card.icon}</div>
+        <div class="del-card__icon">${icon(card.icon)}</div>
         <h3>${card.title}</h3>
         <p>${card.body}</p>
         ${card.meta.length ? `
@@ -100,7 +117,7 @@
     mount.innerHTML += `
       <article class="del-card">
         <span class="del-card__num">04</span>
-        <div class="del-card__icon">▶</div>
+        <div class="del-card__icon">${ICONS.cart}</div>
         <h3>Zamów przez Pyszne.pl</h3>
         <p>Wolisz klikać zamiast gadać? Żaden problem. Znajdziesz nas w aplikacji Pyszne.pl — kilka ruchów palcem i Kapitan płynie do Ciebie z zestawem.</p>
         <a class="del-card__cta" href="${D.shared.social.pyszne}" target="_blank" rel="noopener">Otwórz Pyszne.pl →</a>
@@ -115,7 +132,7 @@
     if (!mount) return;
     mount.innerHTML = D.pillars.map(p => `
       <li class="about-pillar">
-        <span class="about-pillar__ico">${p.ico}</span>
+        <span class="about-pillar__ico">${icon(p.ico)}</span>
         <div>
           <h4>${p.title}</h4>
           <p>${p.body}</p>
@@ -182,6 +199,26 @@
   // rebuild drawer each open so brand context is right
   document.querySelectorAll("[data-drawer-open]").forEach(b => b.addEventListener("click", buildDrawer));
   buildDrawer();
+
+  /* --------- open / closed status badge ---------- */
+  const OPEN_HOUR = 12, CLOSE_HOUR = 22;   // "Codziennie 12:00–22:00"
+  function renderStatus() {
+    const els = document.querySelectorAll("[data-status]");
+    if (!els.length) return;
+    const now = new Date();
+    const h = now.getHours() + now.getMinutes() / 60;
+    const isOpen = h >= OPEN_HOUR && h < CLOSE_HOUR;
+    const label = isOpen
+      ? `Otwarte teraz · do ${CLOSE_HOUR}:00`
+      : (h < OPEN_HOUR ? `Zamknięte · otwieramy ${OPEN_HOUR}:00`
+                       : `Zamknięte · jutro od ${OPEN_HOUR}:00`);
+    els.forEach(el => {
+      el.className = "hero__status " + (isOpen ? "is-open" : "is-closed");
+      el.innerHTML = `<span class="dot"></span><span>${label}</span>`;
+    });
+  }
+  renderStatus();
+  setInterval(renderStatus, 60000);
 
   /* --------- intersection reveal ---------- */
   const io = new IntersectionObserver(entries => {
