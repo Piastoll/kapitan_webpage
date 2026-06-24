@@ -73,10 +73,9 @@
   document.querySelectorAll("[data-drawer-close]").forEach(b => b.addEventListener("click", closeDrawer));
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
 
-  /* --------- render menu (burger) ---------- */
-  const menuMount = document.getElementById("menu-mount");
-  if (menuMount) {
-    menuMount.innerHTML = D.menuBurger.map(cat => `
+  /* --------- menu category renderer (shared by both brands) ---------- */
+  function renderMenuCats(cats) {
+    return cats.map(cat => `
       <section class="menu-cat ${cat.compact ? 'menu-cat--compact' : ''}">
         <div class="menu-cat__head">
           <h3 class="menu-cat__title">${cat.title}</h3>
@@ -95,33 +94,46 @@
     `).join('');
   }
 
-  /* --------- render menu (kebs — single signature product) ---------- */
+  /* --------- render menu (burger: food + all beverages) ---------- */
+  const menuMount = document.getElementById("menu-mount");
+  if (menuMount) {
+    menuMount.innerHTML = renderMenuCats([...D.menuBurger, ...D.beverages]);
+  }
+
+  /* --------- render menu (kebs: signature product + drinks & coffee) ---------- */
   const menuMountKebs = document.getElementById("menu-mount-kebs");
   if (menuMountKebs && D.menuKebs) {
     const m = D.menuKebs;
+    // Kebs shares the drinks + coffee with Burger, but not beer (Piwko).
+    const kebsBeverages = D.beverages.filter(cat => cat.title !== "Piwko");
     menuMountKebs.innerHTML = `
-      <article class="kebs-signature">
-        <div class="kebs-signature__head">
-          <div>
-            <h3 class="kebs-signature__name">${m.name}</h3>
-            <span class="kebs-signature__tag">${m.tag}</span>
+      <div class="menu__single">
+        <article class="kebs-signature">
+          <div class="kebs-signature__head">
+            <div>
+              <h3 class="kebs-signature__name">${m.name}</h3>
+              <span class="kebs-signature__tag">${m.tag}</span>
+            </div>
+            <span class="kebs-signature__price">${m.price}</span>
           </div>
-          <span class="kebs-signature__price">${m.price}</span>
-        </div>
-        <p class="kebs-signature__desc">${m.desc}</p>
-        <div class="kebs-choice">
-          <span class="kebs-choice__label">Pieczywo · do wyboru</span>
-          <ul class="kebs-choice__opts">
-            ${m.breads.map(b => `<li class="kebs-chip"><span>${b.name}</span><b>${b.price}</b></li>`).join('')}
-          </ul>
-        </div>
-        <div class="kebs-choice">
-          <span class="kebs-choice__label">Sosy autorskie · do wyboru</span>
-          <ul class="kebs-choice__opts">
-            ${m.sauces.map(s => `<li class="kebs-chip kebs-chip--sauce"><span class="kebs-chip__emoji">${s.emoji}</span><span>${s.name}</span></li>`).join('')}
-          </ul>
-        </div>
-      </article>
+          <p class="kebs-signature__desc">${m.desc}</p>
+          <div class="kebs-choice">
+            <span class="kebs-choice__label">Pieczywo · do wyboru</span>
+            <ul class="kebs-choice__opts">
+              ${m.breads.map(b => `<li class="kebs-chip"><span>${b.name}</span></li>`).join('')}
+            </ul>
+          </div>
+          <div class="kebs-choice">
+            <span class="kebs-choice__label">Sosy autorskie · do wyboru</span>
+            <ul class="kebs-choice__opts">
+              ${m.sauces.map(s => `<li class="kebs-chip kebs-chip--sauce"><span class="kebs-chip__emoji">${s.emoji}</span><span>${s.name}</span></li>`).join('')}
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="menu__categories menu__categories--kebs">
+        ${renderMenuCats(kebsBeverages)}
+      </div>
     `;
   }
 

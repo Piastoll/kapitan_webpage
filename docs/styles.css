@@ -604,6 +604,7 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0;
 }
 .page--burger .menu-cat__title { color: var(--orange); }
+.page--kebs .menu-cat__title { color: var(--plum-2); }
 .menu-cat__tag {
   font-family: var(--f-mono);
   font-size: 10px;
@@ -644,6 +645,7 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--cream);
 }
 .page--burger .menu-item__price { color: var(--orange-2); }
+.page--kebs .menu-item__price { color: var(--plum-2); }
 .menu-item__desc {
   grid-column: 1 / -1;
   font-size: 14.5px;
@@ -795,6 +797,9 @@ button { font-family: inherit; cursor: pointer; }
 }
 .kebs-chip--sauce { font-size: 16px; }
 .kebs-chip__emoji { font-size: 18px; line-height: 1; }
+
+/* drinks + coffee grid below the signature card on the kebs menu */
+.menu__categories--kebs { margin-top: clamp(48px, 6vw, 80px); }
 
 /* =========================================================
    DELIVERY

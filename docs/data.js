@@ -71,6 +71,12 @@ window.KAPITAN_DATA = {
         { name: "Nachosy",                price: "20 zł" }
       ]
     },
+  ],
+
+  // Beverages live in one place and are shared by both brands, so a price
+  // change updates everywhere at once. Burger shows all of these; Kebs shows
+  // Napoje + Kawa (Piwko is intentionally left off Kebs for now — see app.js).
+  beverages: [
     {
       title: "Napoje",
       tag: "Do popicia",
@@ -112,12 +118,14 @@ window.KAPITAN_DATA = {
   // so it gets its own shape (rendered by a dedicated template, not menuBurger).
   menuKebs: {
     name: "Gemüse",
-    tag: "Berlin Style",
+    tag: "Kebab",
+    // Both buns are the same price, so it's shown once next to the product.
+    // If they ever differ, move price back onto each bread and render it.
     price: "35 zł",
     desc: "Mięso z kurczaka (150 g), smażone warzywa (marchew, ziemniak, cukinia), świeże warzywa (sałata, pomidor, ogórek, czerwona cebula), ser bałkański, mięta, sok z cytryny i nasz autorski sos do wyboru.",
     breads: [
-      { name: "Bułka",  price: "35 zł" },
-      { name: "Lawasz", price: "35 zł" }
+      { name: "Bułka" },
+      { name: "Lawasz" }
     ],
     sauces: [
       { name: "Czosnek",          emoji: "🧄" },
