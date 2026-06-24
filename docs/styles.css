@@ -668,8 +668,10 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 10px;
   letter-spacing: .22em;
   text-transform: uppercase;
-  opacity: .6;
+  /* muted via colour (not opacity) so the accented price can stay full-strength */
+  color: rgba(244,236,224,.6);
 }
+.menu-cat__addons-label .addon-price { color: var(--accent-2); }
 .menu-addons {
   list-style: none;
   margin: 0; padding: 0;

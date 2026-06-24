@@ -92,7 +92,7 @@
         </ul>
         ${cat.addons ? `
           <div class="menu-cat__addons">
-            <span class="menu-cat__addons-label">${cat.addons.label}</span>
+            <span class="menu-cat__addons-label">${cat.addons.label}${cat.addons.price ? ` <span class="addon-price">${cat.addons.price}</span>` : ''}</span>
             <ul class="menu-addons">
               ${cat.addons.items.map(a => `
                 <li class="addon-chip">

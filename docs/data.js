@@ -50,12 +50,13 @@ window.KAPITAN_DATA = {
       ],
       // optional add-on strip; all the same price, so it's shown once
       addons: {
-        label: "Doładuj smasha · dodatki po 3 zł",
+        label: "Doładuj smasha · dodatki po",
+        price: "3 zł",
         items: [
           { name: "Jalapeño",    emoji: "🌶️" },
           { name: "Ser cheddar", emoji: "🧀" },
           { name: "Bekon",       emoji: "🥓" },
-          { name: "Nachosy",     emoji: "📐" }
+          { name: "Nachosy",     emoji: "🌮" }
         ]
       }
     },
