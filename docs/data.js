@@ -108,6 +108,25 @@ window.KAPITAN_DATA = {
     }
   ],
 
+  // Kebs has a single signature product with a bun choice and a sauce choice,
+  // so it gets its own shape (rendered by a dedicated template, not menuBurger).
+  menuKebs: {
+    name: "Gemüse",
+    tag: "Berlin Style",
+    price: "35 zł",
+    desc: "Mięso z kurczaka (150 g), smażone warzywa (marchew, ziemniak, cukinia), świeże warzywa (sałata, pomidor, ogórek, czerwona cebula), ser bałkański, mięta, sok z cytryny i nasz autorski sos do wyboru.",
+    breads: [
+      { name: "Bułka",  price: "35 zł" },
+      { name: "Lawasz", price: "35 zł" }
+    ],
+    sauces: [
+      { name: "Czosnek",          emoji: "🧄" },
+      { name: "Spicy Mango",      emoji: "🥭" },
+      { name: "Ostry",            emoji: "🔥" },
+      { name: "Jogurtowo-ziołowy", emoji: "🌿" }
+    ]
+  },
+
   delivery: [
     {
       lede: true,

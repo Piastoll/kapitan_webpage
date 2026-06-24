@@ -705,6 +705,97 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--plum-2);
 }
 
+/* single signature product (kebs menu) */
+.menu__single { max-width: 760px; }
+.kebs-signature {
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  padding: clamp(26px, 4vw, 48px);
+  background: linear-gradient(180deg, rgba(156,58,147,.10), rgba(255,255,255,.02));
+}
+.kebs-signature__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+}
+.kebs-signature__name {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: .9;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--plum-2);
+}
+.kebs-signature__tag {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  opacity: .55;
+}
+.kebs-signature__price {
+  font-family: var(--f-mono);
+  font-size: 22px;
+  letter-spacing: .06em;
+  white-space: nowrap;
+  color: var(--plum-2);
+}
+.kebs-signature__desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(244,236,224,.78);
+  margin: 0;
+}
+.kebs-choice { margin-top: 26px; }
+.kebs-choice__label {
+  display: block;
+  margin-bottom: 14px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  opacity: .6;
+}
+.kebs-choice__opts {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.kebs-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px;
+  background: rgba(255,255,255,.03);
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.kebs-chip b {
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: .06em;
+  color: var(--plum-2);
+}
+.kebs-chip--sauce { font-size: 16px; }
+.kebs-chip__emoji { font-size: 18px; line-height: 1; }
+
 /* =========================================================
    DELIVERY
    ========================================================= */

@@ -95,6 +95,36 @@
     `).join('');
   }
 
+  /* --------- render menu (kebs — single signature product) ---------- */
+  const menuMountKebs = document.getElementById("menu-mount-kebs");
+  if (menuMountKebs && D.menuKebs) {
+    const m = D.menuKebs;
+    menuMountKebs.innerHTML = `
+      <article class="kebs-signature">
+        <div class="kebs-signature__head">
+          <div>
+            <h3 class="kebs-signature__name">${m.name}</h3>
+            <span class="kebs-signature__tag">${m.tag}</span>
+          </div>
+          <span class="kebs-signature__price">${m.price}</span>
+        </div>
+        <p class="kebs-signature__desc">${m.desc}</p>
+        <div class="kebs-choice">
+          <span class="kebs-choice__label">Pieczywo · do wyboru</span>
+          <ul class="kebs-choice__opts">
+            ${m.breads.map(b => `<li class="kebs-chip"><span>${b.name}</span><b>${b.price}</b></li>`).join('')}
+          </ul>
+        </div>
+        <div class="kebs-choice">
+          <span class="kebs-choice__label">Sosy autorskie · do wyboru</span>
+          <ul class="kebs-choice__opts">
+            ${m.sauces.map(s => `<li class="kebs-chip kebs-chip--sauce"><span class="kebs-chip__emoji">${s.emoji}</span><span>${s.name}</span></li>`).join('')}
+          </ul>
+        </div>
+      </article>
+    `;
+  }
+
   /* --------- delivery cards ---------- */
   function renderDelivery(mountId) {
     const mount = document.getElementById(mountId);
