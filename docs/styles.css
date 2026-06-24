@@ -694,6 +694,7 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--cream);
 }
 .addon-chip__emoji { font-size: 14px; line-height: 1; }
+.addon-chip__img { width: 20px; height: 20px; object-fit: contain; }
 
 /* compact list for non-burgers */
 .menu-cat--compact .menu-item { padding-bottom: 12px; }

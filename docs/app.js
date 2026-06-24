@@ -96,7 +96,8 @@
             <ul class="menu-addons">
               ${cat.addons.items.map(a => `
                 <li class="addon-chip">
-                  ${a.emoji ? `<span class="addon-chip__emoji">${a.emoji}</span>` : ''}<span>${a.name}</span>
+                  ${a.img ? `<img class="addon-chip__img" src="${a.img}" alt="" aria-hidden="true" />`
+                          : a.emoji ? `<span class="addon-chip__emoji">${a.emoji}</span>` : ''}<span>${a.name}</span>
                 </li>
               `).join('')}
             </ul>

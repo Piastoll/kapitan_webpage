@@ -56,7 +56,7 @@ window.KAPITAN_DATA = {
           { name: "Jalapeño",    emoji: "🌶️" },
           { name: "Ser cheddar", emoji: "🧀" },
           { name: "Bekon",       emoji: "🥓" },
-          { name: "Nachosy",     emoji: "🌮" }
+          { name: "Nachosy",     img: "assets/nachos.png" }
         ]
       }
     },
