@@ -655,6 +655,44 @@ button { font-family: inherit; cursor: pointer; }
 .menu-item--simple { grid-template-columns: 1fr auto; }
 .menu-item--simple .menu-item__name { font-size: 17px; }
 
+/* add-on strip under a category (e.g. "Doładuj smasha") */
+.menu-cat__addons {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(255,255,255,.12);
+}
+.menu-cat__addons-label {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  opacity: .6;
+}
+.menu-addons {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.addon-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px;
+  background: rgba(255,255,255,.03);
+  font-family: var(--f-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  color: var(--cream);
+}
+.addon-chip__emoji { font-size: 14px; line-height: 1; }
+
 /* compact list for non-burgers */
 .menu-cat--compact .menu-item { padding-bottom: 12px; }
 .menu-cat--compact .menu-item__name { font-size: 17px; letter-spacing: .04em; }

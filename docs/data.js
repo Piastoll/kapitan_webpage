@@ -41,6 +41,25 @@ window.KAPITAN_DATA = {
       ]
     },
     {
+      title: "Smash",
+      tag: "Smashowana wołowina",
+      items: [
+        { name: "Single", price: "30 zł", desc: "1× smashowana wołowina (70 g), 1× ser cheddar, ogórek piklowany, cebula w kostkę, sos kapitalny." },
+        { name: "Double", price: "35 zł", desc: "2× smashowana wołowina (70 g), 2× ser cheddar, ogórek piklowany, cebula w kostkę, sos kapitalny." },
+        { name: "Triple", price: "40 zł", desc: "3× smashowana wołowina (70 g), 3× ser cheddar, ogórek piklowany, cebula w kostkę, sos kapitalny." }
+      ],
+      // optional add-on strip; all the same price, so it's shown once
+      addons: {
+        label: "Doładuj smasha · dodatki po 3 zł",
+        items: [
+          { name: "Jalapeño",    emoji: "🌶️" },
+          { name: "Ser cheddar", emoji: "🧀" },
+          { name: "Bekon",       emoji: "🥓" },
+          { name: "Nachosy",     emoji: "📐" }
+        ]
+      }
+    },
+    {
       title: "Hot-dog",
       tag: "Klasyka portowa",
       items: [

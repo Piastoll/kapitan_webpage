@@ -85,11 +85,22 @@
           ${cat.items.map(it => `
             <li class="menu-item ${cat.compact ? 'menu-item--simple' : ''}">
               <span class="menu-item__name">${it.name}</span>
-              <span class="menu-item__price">${it.price}</span>
+              ${it.price ? `<span class="menu-item__price">${it.price}</span>` : ''}
               ${it.desc ? `<span class="menu-item__desc">${it.desc}</span>` : ''}
             </li>
           `).join('')}
         </ul>
+        ${cat.addons ? `
+          <div class="menu-cat__addons">
+            <span class="menu-cat__addons-label">${cat.addons.label}</span>
+            <ul class="menu-addons">
+              ${cat.addons.items.map(a => `
+                <li class="addon-chip">
+                  ${a.emoji ? `<span class="addon-chip__emoji">${a.emoji}</span>` : ''}<span>${a.name}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>` : ''}
       </section>
     `).join('');
   }
