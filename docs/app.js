@@ -104,8 +104,8 @@
   const menuMountKebs = document.getElementById("menu-mount-kebs");
   if (menuMountKebs && D.menuKebs) {
     const m = D.menuKebs;
-    // Kebs shares the drinks + coffee with Burger, but not beer (Piwko).
-    const kebsBeverages = D.beverages.filter(cat => cat.title !== "Piwko");
+    // Kebs shares the full beverage list (drinks, beer, coffee) with Burger.
+    const kebsBeverages = D.beverages;
     menuMountKebs.innerHTML = `
       <div class="menu__single">
         <article class="kebs-signature">

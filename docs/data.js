@@ -74,8 +74,7 @@ window.KAPITAN_DATA = {
   ],
 
   // Beverages live in one place and are shared by both brands, so a price
-  // change updates everywhere at once. Burger shows all of these; Kebs shows
-  // Napoje + Kawa (Piwko is intentionally left off Kebs for now — see app.js).
+  // change updates everywhere at once. Both menus show all of these.
   beverages: [
     {
       title: "Napoje",
@@ -117,8 +116,8 @@ window.KAPITAN_DATA = {
   // Kebs has a single signature product with a bun choice and a sauce choice,
   // so it gets its own shape (rendered by a dedicated template, not menuBurger).
   menuKebs: {
-    name: "Gemüse",
-    tag: "Kebab",
+    name: "Gemüse Kebab",
+    tag: "Berlin style · kebab z warzywami",
     // Both buns are the same price, so it's shown once next to the product.
     // If they ever differ, move price back onto each bread and render it.
     price: "35 zł",
